@@ -1,0 +1,47 @@
+h1 {
+  font-size: 60px;
+  font-family: "Georama", sans-serif;
+  color: darkblue;
+  margin-top: 0;
+}
+h2 {
+  font-family: "Georama", sans-serif;
+  color: darkblue;
+  text-align: left;
+}
+h3,
+h4 {
+  font-family: "Georama", sans-serif;
+  font-size: 20px;
+  color: darkblue;
+  text-align: left;
+}
+p {
+  color: rgb(59, 59, 240);
+  font-size: 16px;
+  font-family: "Georama", sans-serif;
+  font-weight: 500;
+}
+
+input {
+  border-radius: 8px;
+  width: 100%;
+}
+
+image {
+  padding: 20px;
+}
+.temps {
+  text-align: center;
+}
+.weather-app {
+  border: 1px solid darkblue;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: fit-content;
+}
+#search-temp {
+  color: darkblue;
+  font-size: 52px;
+}
