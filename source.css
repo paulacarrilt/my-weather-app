@@ -22,7 +22,24 @@ p {
   font-family: "Georama", sans-serif;
   font-weight: 500;
 }
-
+a {
+  color: rgb(59, 59, 240);
+  font-size: 14px;
+  font-family: "Georama", sans-serif;
+  font-weight: 500;
+  position: fixed;
+  display: block;
+  margin: 0 auto;
+  bottom: 10px;
+}
+ul {
+  color: rgb(59, 59, 240);
+  font-size: 16px;
+  font-family: "Georama", sans-serif;
+  font-weight: 500;
+  list-style-type: none;
+  text-align: left;
+}
 input {
   border-radius: 8px;
   width: 100%;
@@ -39,7 +56,8 @@ image {
   padding: 20px;
   border-radius: 10px;
   margin: 20px auto;
-  max-width: fit-content;
+  max-width: 500px;
+  height: 400px;
 }
 #search-temp {
   color: darkblue;
