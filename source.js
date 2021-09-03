@@ -4,10 +4,17 @@ function displayTemp(response) {
   let condition = response.data.weather[0].description;
   let humidity = response.data.main.humidity;
   let wind = response.data.wind.speed;
+  let icon = document.querySelector("#icon");
+
   document.querySelector("#wind").innerHTML = `Wind: ${wind} km/hr`;
   document.querySelector("#humidity").innerHTML = `Humidity: ${humidity}%`;
   document.querySelector("#search-temp").innerHTML = `${temp}°C`;
   document.querySelector("#condition").innerHTML = `${condition}`;
+  icon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
 
 function searchLocation(position) {
