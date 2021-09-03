@@ -2,6 +2,10 @@ function displayTemp(response) {
   document.querySelector("h2").innerHTML = response.data.name;
   let temp = Math.round(response.data.main.temp);
   let condition = response.data.weather[0].description;
+  let humidity = response.data.main.humidity;
+  let wind = response.data.wind.speed;
+  document.querySelector("#wind").innerHTML = `Wind: ${wind} km/hr`;
+  document.querySelector("#humidity").innerHTML = `Humidity: ${humidity}%`;
   document.querySelector("#search-temp").innerHTML = `${temp}°C`;
   document.querySelector("#condition").innerHTML = `${condition}`;
 }
@@ -69,9 +73,7 @@ let month = [
   "December",
 ];
 
-dateHeading.innerHTML = `${day[now.getDay()]} ${date} of ${
-  month[now.getMonth()]
-}, ${year}`;
+dateHeading.innerHTML = `${day[now.getDay()]}`;
 
 if (hours < 10) {
   hours = `0${hours}`;
