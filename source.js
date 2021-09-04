@@ -5,7 +5,6 @@ function displayTemp(response) {
   let humidity = response.data.main.humidity;
   let wind = response.data.wind.speed;
   let icon = document.querySelector("#icon");
-
   document.querySelector("#wind").innerHTML = `Wind: ${wind} km/hr`;
   document.querySelector("#humidity").innerHTML = `Humidity: ${humidity}%`;
   document.querySelector("#search-temp").innerHTML = `${temp}°C`;
