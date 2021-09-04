@@ -5,9 +5,12 @@ function displayTemp(response) {
   let humidity = response.data.main.humidity;
   let wind = response.data.wind.speed;
   let icon = document.querySelector("#icon");
+
+  celsiusTemp = response.data.main.temp;
+
   document.querySelector("#wind").innerHTML = `Wind: ${wind} km/hr`;
   document.querySelector("#humidity").innerHTML = `Humidity: ${humidity}%`;
-  document.querySelector("#search-temp").innerHTML = `${temp}°C`;
+  document.querySelector("#search-temp").innerHTML = `${temp}`;
   document.querySelector("#condition").innerHTML = `${condition}`;
   icon.setAttribute(
     "src",
@@ -37,6 +40,18 @@ function searchCity(event) {
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityEnter.value}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayTemp);
+}
+
+function displayFaTemp(event) {
+  event.preventDefault();
+  let faTemp = Math.round((celsiusTemp * 9) / 5 + 32);
+  let tempElement = document.querySelector("#search-temp");
+  tempElement.innerHTML = faTemp;
+}
+function displayCeTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#search-temp");
+  tempElement.innerHTML = celsiusTemp;
 }
 
 let form = document.querySelector("#search-bar");
@@ -89,3 +104,11 @@ if (minutes < 10) {
 }
 
 time.innerHTML = `${hours}:${minutes}`;
+
+let faLink = document.querySelector("#fa-link");
+faLink.addEventListener("click", displayFaTemp);
+
+let ceLink = document.querySelector("#ce-link");
+ceLink.addEventListener("click", displayCeTemp);
+
+let celsiusTemp = null;
