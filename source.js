@@ -6,7 +6,7 @@ function displayTemp(response) {
   let wind = response.data.wind.speed;
   let icon = document.querySelector("#icon");
 
-  celsiusTemp = response.data.main.temp;
+  celsiusTemp = Math.round(response.data.main.temp);
 
   document.querySelector("#wind").innerHTML = `Wind: ${wind} km/hr`;
   document.querySelector("#humidity").innerHTML = `Humidity: ${humidity}%`;
@@ -47,12 +47,24 @@ function displayFaTemp(event) {
   let faTemp = Math.round((celsiusTemp * 9) / 5 + 32);
   let tempElement = document.querySelector("#search-temp");
   tempElement.innerHTML = faTemp;
+  ceLink.classList.remove("active");
+  faLink.classList.add("active");
 }
 function displayCeTemp(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#search-temp");
   tempElement.innerHTML = celsiusTemp;
+  ceLink.classList.add("active");
+  faLink.classList.remove("active");
 }
+
+let faLink = document.querySelector("#fa-link");
+faLink.addEventListener("click", displayFaTemp);
+
+let ceLink = document.querySelector("#ce-link");
+ceLink.addEventListener("click", displayCeTemp);
+
+let celsiusTemp = null;
 
 let form = document.querySelector("#search-bar");
 form.addEventListener("submit", searchCity);
@@ -104,11 +116,3 @@ if (minutes < 10) {
 }
 
 time.innerHTML = `${hours}:${minutes}`;
-
-let faLink = document.querySelector("#fa-link");
-faLink.addEventListener("click", displayFaTemp);
-
-let ceLink = document.querySelector("#ce-link");
-ceLink.addEventListener("click", displayCeTemp);
-
-let celsiusTemp = null;
