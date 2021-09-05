@@ -54,6 +54,34 @@ input {
   text-decoration: none;
 }
 
+.weather-forecast {
+  text-align: center;
+  font-family: Google Sans, arial, sans-serif;
+  color: darkblue;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 600px;
+}
+
+.weather-forecast-day {
+  font-weight: 500;
+}
+
+.weather-forecast-temp {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.weather-forecast-temp-max {
+  font-weight: 600;
+}
+
+.weather-forecast-temp-min {
+  opacity: 0.5;
+}
+
 #search-temp {
   color: darkblue;
   font-size: 52px;
