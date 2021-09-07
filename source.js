@@ -19,6 +19,30 @@ function displayTemp(response) {
   icon.setAttribute("alt", response.data.weather[0].description);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+        <div class="weather-forecast-day">${day}</div>
+             <img
+             src="https://openweathermap.org/img/wn/09d@2x.png"
+             alt=""
+             width="40px"/>
+        <div class="weather-forecast-temp">
+        <span class="weather-forecast-temp-max">18 </span> / <span class="weather-forecast-temp-min">12</span>
+        </div>
+    </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function searchLocation(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
@@ -116,3 +140,6 @@ if (minutes < 10) {
 }
 
 time.innerHTML = `${hours}:${minutes}`;
+
+displayForecast();
+displayCurrentLocation();
