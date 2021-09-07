@@ -1,3 +1,10 @@
+function getForecast(coordinates) {
+  let apiKey = "255c628f3138fd0c120d0f964422f059";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayTemp(response) {
   document.querySelector("h2").innerHTML = response.data.name;
   let temp = Math.round(response.data.main.temp);
@@ -17,13 +24,14 @@ function displayTemp(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].description);
+  getForecast(response.data.coord);
 }
 
 function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat", "Sun"];
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
@@ -141,5 +149,4 @@ if (minutes < 10) {
 
 time.innerHTML = `${hours}:${minutes}`;
 
-displayForecast();
-displayCurrentLocation();
+searchCity("Preston");

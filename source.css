@@ -52,6 +52,7 @@ input {
 
 .active:hover {
   text-decoration: none;
+  color: darkblue;
 }
 
 .weather-forecast {
