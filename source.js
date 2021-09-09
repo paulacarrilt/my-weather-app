@@ -57,9 +57,9 @@ function displayForecast(response) {
         <div class="weather-forecast-temp">
         <span class="weather-forecast-temp-max">${Math.round(
           forecastDay.temp.max
-        )} </span> / <span class="weather-forecast-temp-min">${Math.round(
+        )}° </span> / <span class="weather-forecast-temp-min">${Math.round(
           forecastDay.temp.min
-        )}</span>
+        )}°</span>
         </div>
     </div>`;
     }
@@ -91,30 +91,6 @@ function searchCity(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityEnter.value}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayTemp);
 }
-
-function displayFaTemp(event) {
-  event.preventDefault();
-  let faTemp = Math.round((celsiusTemp * 9) / 5 + 32);
-  let tempElement = document.querySelector("#search-temp");
-  tempElement.innerHTML = faTemp;
-  ceLink.classList.remove("active");
-  faLink.classList.add("active");
-}
-function displayCeTemp(event) {
-  event.preventDefault();
-  let tempElement = document.querySelector("#search-temp");
-  tempElement.innerHTML = celsiusTemp;
-  ceLink.classList.add("active");
-  faLink.classList.remove("active");
-}
-
-let faLink = document.querySelector("#fa-link");
-faLink.addEventListener("click", displayFaTemp);
-
-let ceLink = document.querySelector("#ce-link");
-ceLink.addEventListener("click", displayCeTemp);
-
-let celsiusTemp = null;
 
 let form = document.querySelector("#search-bar");
 form.addEventListener("submit", searchCity);
